@@ -2,7 +2,7 @@
   "name": "com.tedrickdev.handposer",
   "displayName": "XR Hand Poser",
   "version": "1.0.0",
-  "unity": "2020.3.22f1",
+  "unity": "2020.3",
   "description": "This tool makes it easy to create animated hand poses for use in XR applications.",
   "dependencies": {
     "com.unity.xr.interaction.toolkit": "2.0.0-pre.6"
