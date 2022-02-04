@@ -10,5 +10,12 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/ctedrick/com.tedrickdev.handposer.git"
-  }
+  },
+  "samples": [
+    {
+      "displayName": "Demo Scene",
+      "description": "Demo scene containing an XR rig with example poses.",
+      "path": "Samples~/Hand Pose Demo"
+    }
+  ]
 }

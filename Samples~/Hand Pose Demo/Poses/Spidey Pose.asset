@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1223ed26bde8450fbed0e990f550f9b7, type: 3}
-  m_Name: Spidey
+  m_Name: Spidey Pose
   m_EditorClassIdentifier: 
   LeftJoints:
   - LocalPosition: {x: -0.031327903, y: 0.0073994645, z: 0.068037465}
