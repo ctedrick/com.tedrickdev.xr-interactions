@@ -2,13 +2,13 @@
 
 ![Github licence](http://img.shields.io/badge/license-MIT-blue.svg)
 
-![Banner](~Resources/gun-pose.png)
+![Banner](Resources~/gun-pose.png)
 
 ## Description
 This tool makes it easy to create animated hand poses for use in XR applications. The framework features an adapter class which leverages the Unity XR Interaction Toolkit which decouples the core functionality from specific Unity packages. This tool can be integrated into other XR frameworks by creating corresponding adapter classes.
 
 <p align="center">
-  <img src="~Resources/gun-pose.gif">
+  <img src="Resources~/gun-pose.gif">
 </p>
 
 ## Installation
