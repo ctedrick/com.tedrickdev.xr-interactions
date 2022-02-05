@@ -1,0 +1,82 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1223ed26bde8450fbed0e990f550f9b7, type: 3}
+  m_Name: Surfer Dude Pose
+  m_EditorClassIdentifier: 
+  LeftJoints:
+  - LocalPosition: {x: -0.031327903, y: 0.0073994645, z: 0.068037465}
+    LocalRotation: {x: 0.6462487, y: -0.037380867, z: 0.12719017, w: 0.75152373}
+  - LocalPosition: {x: -0.010328801, y: 0.007532655, z: 0.07242677}
+    LocalRotation: {x: 0.64442605, y: 0.024203653, z: -0.0030096166, w: 0.7642775}
+  - LocalPosition: {x: 0.02696786, y: -0.007957334, z: 0.060998347}
+    LocalRotation: {x: 0.32621196, y: 0.11710613, z: -0.05510831, w: 0.93639475}
+  - LocalPosition: {x: 0.009962955, y: 0.00264488, z: 0.0704226}
+    LocalRotation: {x: 0.806988, y: 0.09527077, z: -0.11758576, w: 0.5708481}
+  - LocalPosition: {x: -0.03221745, y: -0.0057751024, z: 0.005059494}
+    LocalRotation: {x: -0.1668656, y: -0.38584852, z: 0.5969358, w: 0.6833334}
+  - LocalPosition: {x: -5.9799947e-12, y: -0.00029565976, z: 0.027531333}
+    LocalRotation: {x: 0.66101354, y: -0.11110025, z: -0.095036045, w: 0.73599327}
+  - LocalPosition: {x: -6.33918e-12, y: -0.00031341895, z: 0.029185036}
+    LocalRotation: {x: 0.7083812, y: -0.045618232, z: 0.015097575, w: 0.7041926}
+  - LocalPosition: {x: 0.000008189854, y: -0.00024395568, z: 0.022716653}
+    LocalRotation: {x: 0.15956785, y: -0.03281857, z: -0.00086002774, w: 0.98664093}
+  - LocalPosition: {x: 0.000010110051, y: -0.00028937793, z: 0.026946282}
+    LocalRotation: {x: 0.45080099, y: 0.073388845, z: -0.0265347, w: 0.8892067}
+  - LocalPosition: {x: -7.283473e-12, y: -0.00036010623, z: 0.033532474}
+    LocalRotation: {x: -0.04352003, y: -0, z: 0.0000000074505797, w: 0.99905264}
+  - LocalPosition: {x: -8.761519e-12, y: 7.0092085e-11, z: 0.027657265}
+    LocalRotation: {x: 0.40647566, y: 0.30239356, z: -0.2280587, w: 0.8314596}
+  - LocalPosition: {x: -9.2877745e-12, y: 7.430223e-11, z: 0.029318534}
+    LocalRotation: {x: 0.42926112, y: 0.015384823, z: 0.014234036, w: 0.9029372}
+  - LocalPosition: {x: -7.2293014e-12, y: 5.7834373e-11, z: 0.022820566}
+    LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  - LocalPosition: {x: -8.575321e-12, y: 6.860259e-11, z: 0.027069543}
+    LocalRotation: {x: 0.4640366, y: 0.10670735, z: 0.029270414, w: 0.8788782}
+  - LocalPosition: {x: -1.0671297e-11, y: 8.537039e-11, z: 0.03368586}
+    LocalRotation: {x: -0.14171664, y: 0.000000048955204, z: -0.00000007236862, w: 0.98990726}
+  RightJoints:
+  - LocalPosition: {x: -0.031327903, y: 0.0073994645, z: 0.068037465}
+    LocalRotation: {x: 0.6462487, y: -0.037380867, z: 0.12719017, w: 0.75152373}
+  - LocalPosition: {x: -0.010328801, y: 0.007532655, z: 0.07242677}
+    LocalRotation: {x: 0.6444261, y: 0.024203654, z: -0.0030096169, w: 0.7642776}
+  - LocalPosition: {x: 0.02696786, y: -0.007957334, z: 0.060998347}
+    LocalRotation: {x: 0.32621196, y: 0.11710613, z: -0.05510831, w: 0.93639475}
+  - LocalPosition: {x: 0.009962955, y: 0.00264488, z: 0.0704226}
+    LocalRotation: {x: 0.806988, y: 0.09527077, z: -0.11758576, w: 0.5708481}
+  - LocalPosition: {x: -0.03221745, y: -0.0057751024, z: 0.005059494}
+    LocalRotation: {x: -0.1668656, y: -0.38584852, z: 0.5969358, w: 0.6833334}
+  - LocalPosition: {x: -5.9799947e-12, y: -0.00029565976, z: 0.027531333}
+    LocalRotation: {x: 0.66101354, y: -0.11110025, z: -0.095036045, w: 0.73599327}
+  - LocalPosition: {x: -6.33918e-12, y: -0.00031341895, z: 0.029185036}
+    LocalRotation: {x: 0.7083812, y: -0.045618232, z: 0.015097575, w: 0.7041926}
+  - LocalPosition: {x: 0.000008189854, y: -0.00024395568, z: 0.022716653}
+    LocalRotation: {x: 0.15956785, y: -0.03281857, z: -0.00086002774, w: 0.98664093}
+  - LocalPosition: {x: 0.000010110051, y: -0.00028937793, z: 0.026946282}
+    LocalRotation: {x: 0.45080099, y: 0.073388845, z: -0.0265347, w: 0.8892067}
+  - LocalPosition: {x: -7.283473e-12, y: -0.00036010623, z: 0.033532474}
+    LocalRotation: {x: -0.04352003, y: -0, z: 0.0000000074505797, w: 0.99905264}
+  - LocalPosition: {x: -8.761519e-12, y: 7.0092085e-11, z: 0.027657265}
+    LocalRotation: {x: 0.40647566, y: 0.30239356, z: -0.2280587, w: 0.8314596}
+  - LocalPosition: {x: -9.2877745e-12, y: 7.430223e-11, z: 0.029318534}
+    LocalRotation: {x: 0.42926115, y: 0.015384824, z: 0.014234037, w: 0.90293723}
+  - LocalPosition: {x: -7.2293014e-12, y: 5.7834373e-11, z: 0.022820566}
+    LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  - LocalPosition: {x: -8.575321e-12, y: 6.860259e-11, z: 0.027069543}
+    LocalRotation: {x: 0.4640366, y: 0.10670735, z: 0.029270414, w: 0.8788782}
+  - LocalPosition: {x: -1.0671297e-11, y: 8.537039e-11, z: 0.03368586}
+    LocalRotation: {x: -0.14171664, y: 0.000000048955204, z: -0.00000007236862, w: 0.98990726}
+  LeftParentTransform:
+    LocalPosition: {x: -0.1, y: 0, z: 0}
+    LocalRotation: {x: -0, y: -0, z: 0.70710576, w: 0.7071079}
+  RightParentTransform:
+    LocalPosition: {x: 0.1, y: 0, z: 0}
+    LocalRotation: {x: 0, y: -0, z: 0.70710576, w: -0.7071079}

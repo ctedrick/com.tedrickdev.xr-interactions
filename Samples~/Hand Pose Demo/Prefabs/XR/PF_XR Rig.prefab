@@ -49,7 +49,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_UpdateTrackingType: 0
-  m_EnableInputTracking: 1
+  m_EnableInputTracking: 0
   m_EnableInputActions: 1
   m_ModelPrefab: {fileID: 0}
   m_ModelParent: {fileID: 0}
@@ -58,7 +58,7 @@ MonoBehaviour:
   m_ModelSelectTransition: 
   m_ModelDeSelectTransition: 
   m_PositionAction:
-    m_UseReference: 1
+    m_UseReference: 0
     m_Action:
       m_Name: Position
       m_Type: 0
@@ -70,7 +70,7 @@ MonoBehaviour:
       m_Flags: 0
     m_Reference: {fileID: -2024308242397127297, guid: c348712bda248c246b8c49b3db54643f, type: 3}
   m_RotationAction:
-    m_UseReference: 1
+    m_UseReference: 0
     m_Action:
       m_Name: Rotation
       m_Type: 0
@@ -1707,7 +1707,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_UpdateTrackingType: 0
-  m_EnableInputTracking: 1
+  m_EnableInputTracking: 0
   m_EnableInputActions: 1
   m_ModelPrefab: {fileID: 0}
   m_ModelParent: {fileID: 0}
@@ -1728,7 +1728,7 @@ MonoBehaviour:
       m_Flags: 0
     m_Reference: {fileID: -3326005586356538449, guid: c348712bda248c246b8c49b3db54643f, type: 3}
   m_RotationAction:
-    m_UseReference: 1
+    m_UseReference: 0
     m_Action:
       m_Name: Rotation
       m_Type: 0

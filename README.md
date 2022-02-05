@@ -11,7 +11,9 @@ This tool simplifies creating animated hand poses for use in XR applications. Th
 
 [Under Construction]
 
-![Gun Hot Potato](Resources~/gun-pose.gif)
+![Pose Reel](Resources~/pose-reel.gif)
+![Pistolero](Resources~/gun-pose.gif)
+![Pistolero](Resources~/gun-pov.gif)
 
 ## Installation
 
@@ -26,7 +28,7 @@ This tool simplifies creating animated hand poses for use in XR applications. Th
 3. Package will install and pull package dependencies.
 
 ## Dependencies
-The following packages are installed automatically when pulling this via Package Manager :
+The following packages are installed automatically when pulling this via Package Manager
 
 * `Unity XR Interaction Toolkit v2.0.0+`
 * `Unity Input System v1.2.0`
@@ -34,4 +36,3 @@ The following packages are installed automatically when pulling this via Package
 ## Usage
 
 Refer to the **Demo Pose Scene** for instructions of how to use the tool.
-
