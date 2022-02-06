@@ -25,7 +25,6 @@ namespace TedrickDev.XRPoser
             var jointData = new PoseTransform[joints.Count];
             for (var i = 0; i < joints.Count; i++) {
                 var poseData = new PoseTransform {
-                    LocalPosition = joints[i].localPosition,
                     LocalRotation = joints[i].localRotation
                 };
 
@@ -35,6 +34,18 @@ namespace TedrickDev.XRPoser
             return jointData;
         }
 
+        public void SetScrubPose(PoseTransform[] poseFrom, PoseTransform[] poseTo, float value)
+        {
+            if (poseFrom == null || poseFrom.Length == 0) return;
+            if (poseTo == null || poseTo.Length == 0) return;
+
+            value = Mathf.Clamp01(value);
+
+            for (var i = 0; i < joints.Count; i++) {
+                joints[i].localRotation = GetScrubRotation(poseFrom[i].LocalRotation, poseTo[i].LocalRotation, value);
+            }
+        }
+        
         public void SetPose(PoseTransform[] pose)
         {
             if (pose == null || pose.Length == 0) return;
@@ -42,30 +53,15 @@ namespace TedrickDev.XRPoser
             StopAllCoroutines();
             
             for (var i = 0; i < joints.Count; i++) {
-                if (Application.isPlaying) {
-                    StartCoroutine(PositionRoutine(joints[i].transform, pose[i].LocalPosition));
+                if (Application.isPlaying)
                     StartCoroutine(RotationRoutine(joints[i].transform, pose[i].LocalRotation));
-                }
-                else {
-                    joints[i].localPosition = pose[i].LocalPosition;
+                else
                     joints[i].localRotation = pose[i].LocalRotation;
-                }
             }
         }
 
-        private static IEnumerator PositionRoutine(Transform target, Vector3 end)
-        {
-            var time = 0f;
-            var start = target.localPosition;
-            while (time < 0.2f) {
-                target.localPosition = Vector3.Lerp(start, end, time / 0.2f);
-                time += Time.deltaTime;
-                yield return null;
-            }
+        private static Quaternion GetScrubRotation(Quaternion @from, Quaternion end, float value) => Quaternion.Lerp(@from, end, value);
 
-            target.localPosition = end;
-        }
-        
         private static IEnumerator RotationRoutine(Transform target, Quaternion end)
         {
             var time = 0f;

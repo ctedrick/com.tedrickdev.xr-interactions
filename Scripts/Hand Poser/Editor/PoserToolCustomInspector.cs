@@ -12,6 +12,7 @@ namespace TedrickDev.XRPoser
         private bool setDistance;
         private float distance;
         private Vector2 minMaxValues;
+        private float scrubValue;
 
         public override void OnInspectorGUI()
         {
@@ -32,11 +33,22 @@ namespace TedrickDev.XRPoser
             GUILayout.Label("Playback", EditorStyles.boldLabel);
             DrawUILine(Color.grey, 1, 5);
 
+            if (poserTool.PoseData) {
+                scrubValue = EditorGUILayout.Slider("Scrub", scrubValue, 0f, 1f);
+                poserTool.ScrubPose(scrubValue);
+            }
+            
             EditorGUILayout.BeginHorizontal();
 
-            if (GUILayout.Button("Show Pose", EditorStyles.miniButton)) { poserTool.ShowPose(); }
+            if (GUILayout.Button("Show Pose", EditorStyles.miniButton)) {
+                ResetScrubValue(1);
+                poserTool.ShowPose();
+            }
 
-            if (GUILayout.Button("Default Pose", EditorStyles.miniButton)) { poserTool.DefaultPose(); }
+            if (GUILayout.Button("Default Pose", EditorStyles.miniButton)) {
+                ResetScrubValue(0);
+                poserTool.DefaultPose();
+            }
 
             EditorGUILayout.EndHorizontal();
         }
@@ -48,25 +60,40 @@ namespace TedrickDev.XRPoser
             DrawUILine(Color.grey, 1, 5);
 
             #region Top
-
+            
             EditorGUILayout.BeginHorizontal();
 
-            if (GUILayout.Button("Toggle Left Hand", EditorStyles.miniButton)) { poserTool.ToggleLeftHand(); }
+            if (GUILayout.Button("Toggle Left Hand", EditorStyles.miniButton)) {
+                ResetScrubValue(1);
+                poserTool.ToggleLeftHand();
+            }
 
-            if (GUILayout.Button("Toggle Right Hand", EditorStyles.miniButton)) { poserTool.ToggleRightHand(); }
+            if (GUILayout.Button("Toggle Right Hand", EditorStyles.miniButton)) {
+                ResetScrubValue(1);
+                poserTool.ToggleRightHand();
+            }
 
             EditorGUILayout.EndHorizontal();
             EditorGUILayout.Space();
             EditorGUILayout.BeginHorizontal();
 
-            if (GUILayout.Button("Mirror >>>", EditorStyles.miniButton)) { poserTool.MirrorLeftToRight(); }
+            if (GUILayout.Button("Mirror >>>", EditorStyles.miniButton)) {
+                ResetScrubValue(1);
+                poserTool.MirrorLeftToRight();
+            }
 
-            if (GUILayout.Button("<<<< Mirror", EditorStyles.miniButton)) { poserTool.MirrorRightToLeft(); }
+            if (GUILayout.Button("<<<< Mirror", EditorStyles.miniButton)) {
+                ResetScrubValue(1);
+                poserTool.MirrorRightToLeft();
+            }
 
             EditorGUILayout.EndHorizontal();
             EditorGUILayout.Space();
 
-            if (GUILayout.Button("Remove Hands", EditorStyles.miniButton)) { poserTool.RemoveHands(); }
+            if (GUILayout.Button("Remove Hands", EditorStyles.miniButton)) {
+                ResetScrubValue(1);
+                poserTool.RemoveHands();
+            }
 
             #endregion
 
@@ -98,9 +125,19 @@ namespace TedrickDev.XRPoser
 
             EditorGUILayout.Space();
             if (GUILayout.Button("Save New Pose", EditorStyles.miniButton)) {
+                ResetScrubValue(1);
+                
                 var path = EditorUtility.SaveFilePanel("Save as asset", "Assets/", "Pose", "asset");
                 if (path.Length != 0) { poserTool.SavePose(path.ConvertToProjectRelativePath()); }
             }
+        }
+
+        private void ResetScrubValue(float value)
+        {
+            if (!poserTool.PoseData) return;
+            
+            scrubValue = value;
+            poserTool.ScrubPose(value);
         }
 
         private static void DrawUILine(Color color, int thickness = 2, int padding = 10)

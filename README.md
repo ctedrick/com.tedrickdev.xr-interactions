@@ -12,8 +12,10 @@ This tool simplifies creating animated hand poses for use in XR applications. Th
 [Under Construction]
 
 ![Pose Reel](Resources~/pose-reel.gif)
+![Interactables](Resources~/gun-pov.gif)
+![Pose Scrub Rotation](Resources~/pose-scrub.gif)
+![Pose Scrub Distance](Resources~/pose-scrub-distance.gif)
 ![Pistolero](Resources~/gun-pose.gif)
-![Pistolero](Resources~/gun-pov.gif)
 
 ## Installation
 

@@ -9,6 +9,8 @@ namespace TedrickDev.XRPoser
         [Space]
         [SerializeField] private PoseData poseData;
 
+        public PoseData PoseData => poseData;
+
         private PoserManager manager;
 
         private GameObject leftHandParent;
@@ -20,6 +22,12 @@ namespace TedrickDev.XRPoser
         private void OnValidate()
         {
             if (!manager) manager = FindObjectOfType<PoserManager>();
+        }
+
+        public void ScrubPose(float value)
+        {
+            if (leftHand) leftHand.SetScrubPose(manager.DefaultPose.LeftJoints, poseData.LeftJoints, value);
+            if (rightHand) rightHand.SetScrubPose(manager.DefaultPose.RightJoints, poseData.RightJoints, value);
         }
 
         public void AdjustHandDistance(float distance)
@@ -154,13 +162,13 @@ namespace TedrickDev.XRPoser
         
         private void SetEditorPose(PoseData data)
         {
-            if (leftHand && data.LeftJoints.Length != 0) {
+            if (leftHand && data && data.LeftJoints.Length != 0) {
                 leftHand.SetPose(data.LeftJoints);
                 leftHandParent.transform.localPosition = data.LeftParentTransform.LocalPosition;
                 leftHandParent.transform.localRotation = data.LeftParentTransform.LocalRotation;
             }
 
-            if (rightHand && data.RightJoints.Length != 0) {
+            if (rightHand && data && data.RightJoints.Length != 0) {
                 rightHand.SetPose(data.RightJoints);
                 rightHandParent.transform.localPosition = data.RightParentTransform.LocalPosition;
                 rightHandParent.transform.localRotation = data.RightParentTransform.LocalRotation;
