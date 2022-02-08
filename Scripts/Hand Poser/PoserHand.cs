@@ -74,16 +74,5 @@ namespace TedrickDev.XRPoser
 
             target.localRotation = end;
         }
-
-        private void OnDrawGizmos()
-        {
-            if (joints == null || joints.Count == 0) return;
-
-            foreach (var joint in joints) {
-                Gizmos.matrix = joint.localToWorldMatrix;
-                Gizmos.color = Color.green;
-                Gizmos.DrawSphere(Vector3.zero, 0.01f);
-            }
-        }
     }
 }

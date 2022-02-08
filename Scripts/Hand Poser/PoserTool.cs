@@ -6,7 +6,7 @@ namespace TedrickDev.XRPoser
 {
     public class PoserTool : MonoBehaviour
     {
-        [Space]
+        [Space] 
         [SerializeField] private PoseData poseData;
 
         public PoseData PoseData => poseData;
@@ -35,7 +35,7 @@ namespace TedrickDev.XRPoser
             if (leftHandParent == null || rightHandParent == null) return;
 
             var halfDistance = distance * 0.5f;
-            
+
             var leftPosition = leftHandParent.transform.localPosition;
             leftPosition = new Vector3(halfDistance * -1, leftPosition.y, leftPosition.z);
             leftHandParent.transform.localPosition = leftPosition;
@@ -56,7 +56,7 @@ namespace TedrickDev.XRPoser
                     break;
             }
         }
-        
+
         public void ApplyPose(PoserHand poserHand, Transform attachTransform)
         {
             switch (poserHand.Type) {
@@ -70,22 +70,22 @@ namespace TedrickDev.XRPoser
                     break;
             }
         }
-        
+
         private static void ApplyAttachmentTransform(PoseTransform parentTransformData, Transform attachTransform)
         {
             // https://youtu.be/H-qnAHB1AMw?t=765
             var adjustedPosition = parentTransformData.LocalPosition * -1f;
             var adjustedRotation = Quaternion.Inverse(parentTransformData.LocalRotation);
-            
+
             adjustedPosition = adjustedPosition.RotatePointAroundPivot(Vector3.zero, adjustedRotation.eulerAngles);
 
             // Apply offset to hand attach transform
             attachTransform.localPosition = adjustedPosition;
             attachTransform.localRotation = adjustedRotation;
         }
-        
+
         #region Editor Tools
-        
+
         public void ShowPose() => SetEditorPose(poseData);
 
         public void DefaultPose() => SetEditorPose(manager.DefaultPose);
@@ -113,18 +113,32 @@ namespace TedrickDev.XRPoser
             }
         }
 
+        public void SelectLeftHand()
+        {
+            if (leftHand && leftHand.gameObject.activeSelf) Selection.SetActiveObjectWithContext(leftHand, null);
+        }
+        
+        public void SelectRightHand()
+        {
+            if (rightHand && rightHand.gameObject.activeSelf) Selection.SetActiveObjectWithContext(rightHand, null);
+        }
+        
         public void MirrorLeftToRight()
         {
+            if (!leftHand || !rightHand) return;
+            
             MirrorHand(leftHandParent.transform, rightHandParent.transform);
             MirrorJoints(leftHand, rightHand);
         }
-        
+
         public void MirrorRightToLeft()
         {
+            if (!leftHand || !rightHand) return;
+
             MirrorHand(rightHandParent.transform, leftHandParent.transform);
             MirrorJoints(rightHand, leftHand);
         }
-        
+
         public void RemoveHands()
         {
             DestroyImmediate(leftHandParent);
@@ -134,7 +148,7 @@ namespace TedrickDev.XRPoser
             leftHand = null;
             rightHand = null;
         }
-        
+
         private bool CheckParentGameObjectExists(ref GameObject parentGO, string goName, ref PoserHand poserHand, PoserHand prefab)
         {
             if (!parentGO) {
@@ -142,12 +156,14 @@ namespace TedrickDev.XRPoser
                 parentGO.transform.localPosition = Vector3.zero;
                 parentGO.transform.localRotation = Quaternion.identity;
                 parentGO.transform.SetParent(transform);
+                parentGO.name += "---Rotate & Position Me---";
 
                 poserHand = Instantiate(prefab, parentGO.transform);
                 var poserHandTransform = poserHand.transform;
                 poserHandTransform.localPosition = Vector3.zero;
                 poserHandTransform.localRotation = Quaternion.identity;
                 poserHand.gameObject.SetActive(true);
+                poserHand.name = "---DO NOT Rotate or Position Me // Rotate joints only---";
 
                 if (poserHand == leftHand)
                     leftHandParent.transform.position = transform.position + Vector3.left * 0.1f;
@@ -159,7 +175,7 @@ namespace TedrickDev.XRPoser
 
             return true;
         }
-        
+
         private void SetEditorPose(PoseData data)
         {
             if (leftHand && data && data.LeftJoints.Length != 0) {
@@ -174,7 +190,7 @@ namespace TedrickDev.XRPoser
                 rightHandParent.transform.localRotation = data.RightParentTransform.LocalRotation;
             }
         }
-        
+
         private static void MirrorJoints(PoserHand source, PoserHand copy)
         {
             for (var i = 0; i < source.Joints.Count; i++) {
@@ -190,11 +206,12 @@ namespace TedrickDev.XRPoser
             copy.localPosition = newPosition;
 
             var localRotation = source.localRotation;
-            
+
             // https://forum.unity.com/threads/how-to-mirror-a-euler-angle-or-rotation.90650/
-            copy.localRotation = new Quaternion(localRotation.x * -1.0f, localRotation.y, localRotation.z, localRotation.w * -1.0f);
+            copy.localRotation = new Quaternion(localRotation.x * -1.0f, localRotation.y, localRotation.z,
+                                                localRotation.w * -1.0f);
         }
-        
+
         #endregion
     }
 }

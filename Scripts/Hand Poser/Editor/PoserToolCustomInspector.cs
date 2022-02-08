@@ -77,6 +77,19 @@ namespace TedrickDev.XRPoser
             EditorGUILayout.Space();
             EditorGUILayout.BeginHorizontal();
 
+            if (GUILayout.Button("Select Left Hand", EditorStyles.miniButton)) {
+                poserTool.SelectLeftHand();
+            }
+
+            if (GUILayout.Button("Select Right Hand", EditorStyles.miniButton)) {
+                poserTool.SelectRightHand();
+            }
+
+            EditorGUILayout.EndHorizontal();
+            
+            EditorGUILayout.Space();
+            EditorGUILayout.BeginHorizontal();
+
             if (GUILayout.Button("Mirror >>>", EditorStyles.miniButton)) {
                 ResetScrubValue(1);
                 poserTool.MirrorLeftToRight();
@@ -94,7 +107,7 @@ namespace TedrickDev.XRPoser
                 ResetScrubValue(1);
                 poserTool.RemoveHands();
             }
-
+            
             #endregion
 
             #region Set Distance Subsection
