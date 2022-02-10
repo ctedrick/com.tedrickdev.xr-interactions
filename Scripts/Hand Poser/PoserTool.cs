@@ -113,6 +113,17 @@ namespace TedrickDev.XRPoser
             }
         }
 
+        public void SelectLeftHandParent()
+        {
+            if (leftHand && leftHand.gameObject.activeSelf) Selection.SetActiveObjectWithContext(leftHandParent, null);
+            
+        }
+
+        public void SelectRightHandParent()
+        {
+            if (rightHand && rightHand.gameObject.activeSelf) Selection.SetActiveObjectWithContext(rightHandParent, null);
+        }
+
         public void SelectLeftHand()
         {
             if (leftHand && leftHand.gameObject.activeSelf) Selection.SetActiveObjectWithContext(leftHand, null);
@@ -164,6 +175,8 @@ namespace TedrickDev.XRPoser
                 poserHandTransform.localRotation = Quaternion.identity;
                 poserHand.gameObject.SetActive(true);
                 poserHand.name = "---DO NOT Rotate or Position Me // Rotate joints only---";
+
+                parentGO.AddComponent<PoserHandParent>();
 
                 if (poserHand == leftHand)
                     leftHandParent.transform.position = transform.position + Vector3.left * 0.1f;

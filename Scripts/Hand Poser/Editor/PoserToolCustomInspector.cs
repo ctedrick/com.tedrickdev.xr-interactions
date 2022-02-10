@@ -55,20 +55,40 @@ namespace TedrickDev.XRPoser
 
         private void DrawEditSection()
         {
+            var bold = new GUIStyle {fontStyle = FontStyle.Bold, normal = {textColor = Color.white}};
+
+            #region "Header" 
+            
             EditorGUILayout.Space();
             GUILayout.Label("Edit", EditorStyles.boldLabel);
             DrawUILine(Color.grey, 1, 5);
 
-            #region Top
+            EditorGUILayout.BeginHorizontal();
+
+            GUILayout.FlexibleSpace();
+            GUILayout.Label("Left Hand", bold);
+            GUILayout.FlexibleSpace();
+            
+            GUILayout.FlexibleSpace();
+            GUILayout.Label("Right Hand", bold);
+            GUILayout.FlexibleSpace();
+
+            EditorGUILayout.EndHorizontal();
+            
+            DrawUILine(Color.grey, 1, 5);
+            
+            #endregion
+            
+            #region Body
             
             EditorGUILayout.BeginHorizontal();
 
-            if (GUILayout.Button("Toggle Left Hand", EditorStyles.miniButton)) {
+            if (GUILayout.Button("Toggle", EditorStyles.miniButton)) {
                 ResetScrubValue(1);
                 poserTool.ToggleLeftHand();
             }
 
-            if (GUILayout.Button("Toggle Right Hand", EditorStyles.miniButton)) {
+            if (GUILayout.Button("Toggle", EditorStyles.miniButton)) {
                 ResetScrubValue(1);
                 poserTool.ToggleRightHand();
             }
@@ -77,11 +97,23 @@ namespace TedrickDev.XRPoser
             EditorGUILayout.Space();
             EditorGUILayout.BeginHorizontal();
 
-            if (GUILayout.Button("Select Left Hand", EditorStyles.miniButton)) {
+            if (GUILayout.Button("Select Parent", EditorStyles.miniButton)) {
+                poserTool.SelectLeftHandParent();
+            }
+
+            if (GUILayout.Button("Select Parent", EditorStyles.miniButton)) {
+                poserTool.SelectRightHandParent();
+            }
+            
+            EditorGUILayout.EndHorizontal();
+            EditorGUILayout.Space();
+            EditorGUILayout.BeginHorizontal();
+
+            if (GUILayout.Button("Select Hand", EditorStyles.miniButton)) {
                 poserTool.SelectLeftHand();
             }
 
-            if (GUILayout.Button("Select Right Hand", EditorStyles.miniButton)) {
+            if (GUILayout.Button("Select Hand", EditorStyles.miniButton)) {
                 poserTool.SelectRightHand();
             }
 
@@ -90,7 +122,7 @@ namespace TedrickDev.XRPoser
             EditorGUILayout.Space();
             EditorGUILayout.BeginHorizontal();
 
-            if (GUILayout.Button("Mirror >>>", EditorStyles.miniButton)) {
+            if (GUILayout.Button("Mirror >>>>", EditorStyles.miniButton)) {
                 ResetScrubValue(1);
                 poserTool.MirrorLeftToRight();
             }
