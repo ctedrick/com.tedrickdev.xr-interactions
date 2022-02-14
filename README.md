@@ -2,13 +2,14 @@
 
 ![Github licence](http://img.shields.io/badge/license-MIT-blue.svg)
 
-![Banner](Resources~/gun-pose.png)
+![Banner](Resources~/banner.png)
 
 ## Description
 This tool simplifies creating animated hand poses for use in XR applications. The core scripts are not coupled to any specific XR framework so it remains flexible and lightweight. Included with this package is a demo scene built with the [Unity XR Interaction Toolkit](https://docs.unity3d.com/Packages/com.unity.xr.interaction.toolkit@2.0/manual/index.html) package.
 
 ## Features
 
+![Pose Reel](Resources~/banner-video.gif)
 ![Pose Reel](Resources~/gun-pose-two-handed.gif)
 ![Pose Reel](Resources~/pose-reel.gif)
 ![Interactables](Resources~/gun-pov.gif)
