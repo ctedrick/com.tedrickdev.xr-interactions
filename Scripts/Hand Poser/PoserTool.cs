@@ -1,6 +1,7 @@
 ﻿using UnityEditor;
 using UnityEngine;
 using TedrickDev.Utilities;
+using TedrickDev.XRPoser.Interactions;
 
 namespace TedrickDev.XRPoser
 {
@@ -24,12 +25,6 @@ namespace TedrickDev.XRPoser
             if (!manager) manager = FindObjectOfType<PoserManager>();
         }
 
-        public void ScrubPose(float value)
-        {
-            if (leftHand) leftHand.SetScrubPose(manager.DefaultPose.LeftJoints, poseData.LeftJoints, value);
-            if (rightHand) rightHand.SetScrubPose(manager.DefaultPose.RightJoints, poseData.RightJoints, value);
-        }
-
         public void AdjustHandDistance(float distance)
         {
             if (leftHandParent == null || rightHandParent == null) return;
@@ -44,7 +39,7 @@ namespace TedrickDev.XRPoser
             rightPosition = new Vector3(halfDistance, rightPosition.y, rightPosition.z);
             rightHandParent.transform.localPosition = rightPosition;
         }
-
+        
         public void ApplyDefaultPose(PoserHand poserHand)
         {
             switch (poserHand.Type) {
@@ -56,7 +51,7 @@ namespace TedrickDev.XRPoser
                     break;
             }
         }
-
+        
         public void ApplyPose(PoserHand poserHand, Transform attachTransform)
         {
             switch (poserHand.Type) {
@@ -70,69 +65,8 @@ namespace TedrickDev.XRPoser
                     break;
             }
         }
-
-        private static void ApplyAttachmentTransform(PoseTransform parentTransformData, Transform attachTransform)
-        {
-            // https://youtu.be/H-qnAHB1AMw?t=765
-            var adjustedPosition = parentTransformData.LocalPosition * -1f;
-            var adjustedRotation = Quaternion.Inverse(parentTransformData.LocalRotation);
-
-            adjustedPosition = adjustedPosition.RotatePointAroundPivot(Vector3.zero, adjustedRotation.eulerAngles);
-
-            // Apply offset to hand attach transform
-            attachTransform.localPosition = adjustedPosition;
-            attachTransform.localRotation = adjustedRotation;
-        }
-
-        #region Editor Tools
-
-        public void ShowPose() => SetEditorPose(poseData);
-
-        public void DefaultPose() => SetEditorPose(manager.DefaultPose);
-
-        public void SavePose(string filePath)
-        {
-            var so = ScriptableObject.CreateInstance<PoseData>();
-            if (leftHand) so.SaveLeftHandData(leftHand.CreatePose(), leftHandParent.transform);
-            if (rightHand) so.SaveRightHandData(rightHand.CreatePose(), rightHandParent.transform);
-
-            AssetDatabase.CreateAsset(so, filePath);
-        }
-
-        public void ToggleLeftHand()
-        {
-            if (CheckParentGameObjectExists(ref leftHandParent, nameof(leftHandParent), ref leftHand, manager.LeftPrefab)) {
-                leftHandParent.SetActive(!leftHandParent.activeSelf);
-            }
-        }
-
-        public void ToggleRightHand()
-        {
-            if (CheckParentGameObjectExists(ref rightHandParent, nameof(rightHandParent), ref rightHand, manager.RightPrefab)) {
-                rightHandParent.SetActive(!rightHandParent.activeSelf);
-            }
-        }
-
-        public void SelectLeftHandParent()
-        {
-            if (leftHand && leftHand.gameObject.activeSelf) Selection.SetActiveObjectWithContext(leftHandParent, null);
-            
-        }
-
-        public void SelectRightHandParent()
-        {
-            if (rightHand && rightHand.gameObject.activeSelf) Selection.SetActiveObjectWithContext(rightHandParent, null);
-        }
-
-        public void SelectLeftHand()
-        {
-            if (leftHand && leftHand.gameObject.activeSelf) Selection.SetActiveObjectWithContext(leftHand, null);
-        }
         
-        public void SelectRightHand()
-        {
-            if (rightHand && rightHand.gameObject.activeSelf) Selection.SetActiveObjectWithContext(rightHand, null);
-        }
+        public void DefaultPose() => SetEditorPose(manager.DefaultPose);
         
         public void MirrorLeftToRight()
         {
@@ -149,7 +83,7 @@ namespace TedrickDev.XRPoser
             MirrorHand(rightHandParent.transform, leftHandParent.transform);
             MirrorJoints(rightHand, leftHand);
         }
-
+        
         public void RemoveHands()
         {
             DestroyImmediate(leftHandParent);
@@ -158,6 +92,57 @@ namespace TedrickDev.XRPoser
             rightHandParent = null;
             leftHand = null;
             rightHand = null;
+        }
+
+        public void SavePose(string filePath)
+        {
+            var so = ScriptableObject.CreateInstance<PoseData>();
+            if (leftHand) so.SaveLeftHandData(leftHand.CreatePose(), leftHandParent.transform);
+            if (rightHand) so.SaveRightHandData(rightHand.CreatePose(), rightHandParent.transform);
+
+            AssetDatabase.CreateAsset(so, filePath);
+        }
+
+        public void ScrubPose(float value)
+        {
+            if (leftHand) leftHand.SetScrubPose(manager.DefaultPose.LeftJoints, poseData.LeftJoints, value);
+            if (rightHand) rightHand.SetScrubPose(manager.DefaultPose.RightJoints, poseData.RightJoints, value);
+        }
+        
+        public void SelectLeftHandParent()
+        {
+            if (leftHand && leftHand.gameObject.activeSelf) Selection.SetActiveObjectWithContext(leftHandParent, null);
+        }
+
+        public void SelectRightHandParent()
+        {
+            if (rightHand && rightHand.gameObject.activeSelf) Selection.SetActiveObjectWithContext(rightHandParent, null);
+        }
+
+        public void SelectLeftHand()
+        {
+            if (leftHand && leftHand.gameObject.activeSelf) Selection.SetActiveObjectWithContext(leftHand, null);
+        }
+        
+        public void SelectRightHand()
+        {
+            if (rightHand && rightHand.gameObject.activeSelf) Selection.SetActiveObjectWithContext(rightHand, null);
+        }
+
+        public void ShowPose() => SetEditorPose(poseData);
+        
+        public void ToggleLeftHand()
+        {
+            if (CheckParentGameObjectExists(ref leftHandParent, nameof(leftHandParent), ref leftHand, manager.LeftPrefab)) {
+                leftHandParent.SetActive(!leftHandParent.activeSelf);
+            }
+        }
+
+        public void ToggleRightHand()
+        {
+            if (CheckParentGameObjectExists(ref rightHandParent, nameof(rightHandParent), ref rightHand, manager.RightPrefab)) {
+                rightHandParent.SetActive(!rightHandParent.activeSelf);
+            }
         }
 
         private bool CheckParentGameObjectExists(ref GameObject parentGO, string goName, ref PoserHand poserHand, PoserHand prefab)
@@ -203,6 +188,19 @@ namespace TedrickDev.XRPoser
                 rightHandParent.transform.localRotation = data.RightParentTransform.LocalRotation;
             }
         }
+        
+        private static void ApplyAttachmentTransform(PoseTransform parentTransformData, Transform attachTransform)
+        {
+            // https://youtu.be/H-qnAHB1AMw?t=765
+            var adjustedPosition = parentTransformData.LocalPosition * -1f;
+            var adjustedRotation = Quaternion.Inverse(parentTransformData.LocalRotation);
+
+            adjustedPosition = adjustedPosition.RotatePointAroundPivot(Vector3.zero, adjustedRotation.eulerAngles);
+
+            // Apply offset to hand attach transform
+            attachTransform.localPosition = adjustedPosition;
+            attachTransform.localRotation = adjustedRotation;
+        }
 
         private static void MirrorJoints(PoserHand source, PoserHand copy)
         {
@@ -224,7 +222,5 @@ namespace TedrickDev.XRPoser
             copy.localRotation = new Quaternion(localRotation.x * -1.0f, localRotation.y, localRotation.z,
                                                 localRotation.w * -1.0f);
         }
-
-        #endregion
     }
 }

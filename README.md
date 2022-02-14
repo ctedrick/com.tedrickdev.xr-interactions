@@ -9,6 +9,7 @@ This tool simplifies creating animated hand poses for use in XR applications. Th
 
 ## Features
 
+![Pose Reel](Resources~/gun-pose-two-handed.gif)
 ![Pose Reel](Resources~/pose-reel.gif)
 ![Interactables](Resources~/gun-pov.gif)
 ![Pose Editor Tools](Resources~/pose-handles.gif)

@@ -8,6 +8,8 @@ namespace TedrickDev.XRPoser
     {
         [SerializeField] private List<Transform> joints;
 
+        public Transform AttachTransform;
+
         public List<Transform> Joints => joints;
         
         public Handedness Type;
@@ -45,8 +47,15 @@ namespace TedrickDev.XRPoser
                 joints[i].localRotation = GetScrubRotation(poseFrom[i].LocalRotation, poseTo[i].LocalRotation, value);
             }
         }
+
+        public void ApplyDefaultPose()
+        {
+            SetPose(Type == Handedness.Left
+                        ? PoserManager.Instance.DefaultPose.LeftJoints
+                        : PoserManager.Instance.DefaultPose.RightJoints);
+        }
         
-        public void SetPose(PoseTransform[] pose)
+        public void SetPose(PoseTransform[] pose, float duration = 0.2f)
         {
             if (pose == null || pose.Length == 0) return;
             
@@ -54,7 +63,7 @@ namespace TedrickDev.XRPoser
             
             for (var i = 0; i < joints.Count; i++) {
                 if (Application.isPlaying)
-                    StartCoroutine(RotationRoutine(joints[i].transform, pose[i].LocalRotation));
+                    StartCoroutine(RotationRoutine(joints[i].transform, pose[i].LocalRotation, duration));
                 else
                     joints[i].localRotation = pose[i].LocalRotation;
             }
@@ -62,12 +71,12 @@ namespace TedrickDev.XRPoser
 
         private static Quaternion GetScrubRotation(Quaternion @from, Quaternion end, float value) => Quaternion.Lerp(@from, end, value);
 
-        private static IEnumerator RotationRoutine(Transform target, Quaternion end)
+        private static IEnumerator RotationRoutine(Transform target, Quaternion end, float duration)
         {
             var time = 0f;
             var start = target.localRotation;
-            while (time < 0.2f) {
-                target.localRotation = Quaternion.Lerp(start, end, time / 0.2f);
+            while (time < duration) {
+                target.localRotation = Quaternion.Lerp(start, end, time / duration);
                 time += Time.deltaTime;
                 yield return null;
             }
