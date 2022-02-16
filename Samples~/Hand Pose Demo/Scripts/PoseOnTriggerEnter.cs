@@ -1,6 +1,7 @@
-﻿using UnityEngine;
+﻿using TedrickDev.HandPoser.Poser;
+using UnityEngine;
 
-namespace TedrickDev.HandPoser.Poser.HandPoseDemo
+namespace TedrickDev.HandPoser.HandPoseDemo
 {
     public class PoseOnTriggerEnter : MonoBehaviour
     {

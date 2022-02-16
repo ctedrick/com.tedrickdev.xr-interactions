@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TedrickDev.HandPoser.Poser;
 using UnityEngine;
 
-namespace TedrickDev.HandPoser.Poser.HandPoseDemo
+namespace TedrickDev.HandPoser.HandPoseDemo
 {
     public class PlayPoses : MonoBehaviour
     {
