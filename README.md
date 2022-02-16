@@ -5,18 +5,28 @@
 ![Banner](Resources~/banner.png)
 
 ## Description
-This tool simplifies creating animated hand poses for use in XR applications. The core scripts are not coupled to any specific XR framework so it remains flexible and lightweight. Included with this package is a demo scene built with the [Unity XR Interaction Toolkit](https://docs.unity3d.com/Packages/com.unity.xr.interaction.toolkit@2.0/manual/index.html) package.
+This is a lightweight hand poser tool that simplifies creating animated hand poses for use in Unity XR applications.
+Built using vanilla Unity colliders to handle interactions, no other framework is needed to use this package.
+
+
+Grab interactions are included as well supporting both one and two-handed interactions. 
+The framework is extendable, making it easy to add other types of interactions as needed.
 
 ## Features
 
+### Two Hand Interactions
 ![Pose Reel](Resources~/banner-video.gif)
 ![Pose Reel](Resources~/gun-pose-two-handed.gif)
-![Pose Reel](Resources~/pose-reel.gif)
+
+### One Hand Interactions
 ![Interactables](Resources~/gun-pov.gif)
-![Pose Editor Tools](Resources~/pose-handles.gif)
+![Pistolero](Resources~/gun-pose.gif)
+
+### Pose Editor Tool
+![Pose Reel](Resources~/poser-editor-demo.gif)
 ![Pose Scrub Rotation](Resources~/pose-scrub.gif)
 ![Pose Scrub Distance](Resources~/pose-scrub-distance.gif)
-![Pistolero](Resources~/gun-pose.gif)
+![Pose Reel](Resources~/pose-reel.gif)
 
 ## Installation
 
@@ -28,14 +38,13 @@ This tool simplifies creating animated hand poses for use in XR applications. Th
 
     ![Package Manager Repo](Resources~/Installation/packagemanager-repo.png)
 
-3. Package will install and pull package dependencies.
+3. Package will pull package dependencies.
 
 ## Dependencies
-The following packages are installed automatically when pulling this via Package Manager
+The following are installed automatically when pulling this via Package Manager
 
-* `Unity XR Interaction Toolkit v2.0.0+`
 * `Unity Input System v1.2.0`
 
 ## Usage
 
-Refer to the **Demo Pose Scene** for instructions of how to use the tool.
+TBD
