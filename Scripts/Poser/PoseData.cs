@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace TedrickDev.XRPoser
+namespace TedrickDev.HandPoser.Poser
 {
     [CreateAssetMenu(fileName = "Pose", menuName = "Create Pose", order = 0)]
     public class PoseData : ScriptableObject

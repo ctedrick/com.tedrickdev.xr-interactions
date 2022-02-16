@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace TedrickDev.XRPoser
+namespace TedrickDev.HandPoser.Poser
 {
     public class PoserHand : MonoBehaviour
     {
@@ -69,7 +69,7 @@ namespace TedrickDev.XRPoser
             }
         }
 
-        private static Quaternion GetScrubRotation(Quaternion @from, Quaternion end, float value) => Quaternion.Lerp(@from, end, value);
+        private static Quaternion GetScrubRotation(Quaternion from, Quaternion end, float value) => Quaternion.Lerp(from, end, value);
 
         private static IEnumerator RotationRoutine(Transform target, Quaternion end, float duration)
         {

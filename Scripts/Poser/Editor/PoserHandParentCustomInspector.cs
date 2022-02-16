@@ -1,7 +1,7 @@
 ﻿using UnityEditor;
 using UnityEngine;
 
-namespace TedrickDev.XRPoser
+namespace TedrickDev.HandPoser.Poser
 {
     [CustomEditor(typeof(PoserHandParent))]
     public class PoserHandParentCustomInspector : Editor

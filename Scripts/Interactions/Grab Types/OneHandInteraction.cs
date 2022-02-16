@@ -1,11 +1,13 @@
-﻿namespace TedrickDev.XRPoser.Interactions
+﻿using TedrickDev.HandPoser.Poser;
+
+namespace TedrickDev.HandPoser.Interactions
 {
-    public class OneHandGrab : GrabMode
+    public class OneHandInteraction : InteractionMode
     {
         private PoserHand activeHand;
         private bool isActive;
         
-        public override void ApplyPose(GrabZone grabber)
+        public override void ApplyPose(InteractionZone grabber)
         {
             // Initial grab
             if (!isActive) {

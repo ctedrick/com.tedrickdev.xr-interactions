@@ -1,14 +1,15 @@
 ﻿using System;
+using TedrickDev.HandPoser.Poser;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace TedrickDev.XRPoser.Interactions
+namespace TedrickDev.HandPoser.Interactions
 {
     public enum GrabZoneType {Primary, Secondary }
 
-    public class GrabZone : MonoBehaviour
+    public class InteractionZone : MonoBehaviour
     {
-        public event Action<GrabZone> OnInteract;
+        public event Action<InteractionZone> OnInteract;
 
         [SerializeField] private InputActionReference leftInputAction;
         [SerializeField] private InputActionReference rightInputAction;
@@ -96,11 +97,10 @@ namespace TedrickDev.XRPoser.Interactions
             if (hand.Type == Handedness.Left) leftHoverHand = null;
             else rightHoverHand = null;
         }
-        
+
         private void OnDrawGizmos()
         {
-            if (!showGizmos) return;
-            if (!grabCollider) return;
+            if (!showGizmos || !grabCollider) return;
             if (GrabZoneType == GrabZoneType.Primary) return;
             
             Gizmos.color = Color.red;

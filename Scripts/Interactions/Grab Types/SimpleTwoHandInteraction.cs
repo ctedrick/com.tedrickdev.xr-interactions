@@ -1,15 +1,16 @@
-﻿using UnityEngine;
+﻿using TedrickDev.HandPoser.Poser;
+using UnityEngine;
 
-namespace TedrickDev.XRPoser.Interactions
+namespace TedrickDev.HandPoser.Interactions
 {
-    public class TwoHandGrab : GrabMode
+    public class SimpleTwoHandInteraction : InteractionMode
     {
         private bool isPrimaryActive;
         private bool isSecondaryActive;
 
         private PoserHand primaryHand;
         private PoserHand secondaryHand;
-        private GrabZone secondaryGrabZone;
+        private InteractionZone secondaryInteractionZone;
         
         private Transform secondaryHandParent;
         private Vector3 secondaryHandOriginalLocalPosition;
@@ -17,7 +18,7 @@ namespace TedrickDev.XRPoser.Interactions
 
         private Transform secondaryHandContainer;
 
-        public override void ApplyPose(GrabZone grabber)
+        public override void ApplyPose(InteractionZone grabber)
         {
             // Must grab primary first before grabbing secondary
             if (!isPrimaryActive && grabber.GrabZoneType == GrabZoneType.Secondary) return;
@@ -40,7 +41,7 @@ namespace TedrickDev.XRPoser.Interactions
             else if (isPrimaryActive && !isSecondaryActive && grabber.GrabZoneType == GrabZoneType.Secondary) {
                 isSecondaryActive = true;
 
-                secondaryGrabZone = grabber;
+                secondaryInteractionZone = grabber;
                 secondaryHand = grabber.Hand;
                 
                 secondaryHandParent = grabber.Hand.transform.parent;
@@ -90,7 +91,7 @@ namespace TedrickDev.XRPoser.Interactions
         {
             if (!isSecondaryActive) return;
 
-            if (secondaryGrabZone.IsOutsideDetachRadius(secondaryHandParent)) {
+            if (secondaryInteractionZone.IsOutsideDetachRadius(secondaryHandParent)) {
                 isSecondaryActive = false;
                 
                 secondaryHand.transform.SetParent(secondaryHandParent);

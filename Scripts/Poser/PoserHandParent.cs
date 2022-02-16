@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace TedrickDev.XRPoser
+namespace TedrickDev.HandPoser.Poser
 {
     public class PoserHandParent : MonoBehaviour
     {

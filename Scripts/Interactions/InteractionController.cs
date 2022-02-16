@@ -2,19 +2,19 @@
 using UnityEditor;
 using UnityEngine;
 
-namespace TedrickDev.XRPoser.Interactions
+namespace TedrickDev.HandPoser.Interactions
 {
-    public class GrabController : MonoBehaviour
+    public class InteractionController : MonoBehaviour
     {
-        private enum SelectionType { OneHand, TwoHand }
+        private enum SelectionType { OneHand, SimpleTwoHand }
 
         [SerializeField] private SelectionType grabType;
 
         [Space]
-        [SerializeField] private bool autoPopulateGrabZones;
-        [SerializeField] private List<GrabZone> grabZones;
+        [SerializeField] private bool autoPopulateGrabZones = true;
+        [SerializeField] private List<InteractionZone> grabZones;
         
-        private GrabMode grabMode;
+        private InteractionMode interactionMode;
 
         private void Awake()
         {
@@ -28,7 +28,7 @@ namespace TedrickDev.XRPoser.Interactions
             
             foreach (var zone in grabZones) zone.OnInteract += OnInteract;
             
-            grabMode = GetComponent<GrabMode>();
+            interactionMode = GetComponent<InteractionMode>();
         }
         
         // https://forum.unity.com/threads/sendmessage-cannot-be-called-during-awake-checkconsistency-or-onvalidate-can-we-suppress.537265/
@@ -42,14 +42,14 @@ namespace TedrickDev.XRPoser.Interactions
             
             switch (grabType) {
                 case SelectionType.OneHand:
-                    AddSelectionMode<OneHandGrab>();
+                    AddSelectionMode<OneHandInteraction>();
                     break;
-                case SelectionType.TwoHand:
-                    AddSelectionMode<TwoHandGrab>();
+                case SelectionType.SimpleTwoHand:
+                    AddSelectionMode<SimpleTwoHandInteraction>();
                     break;
             }
 
-            grabMode = GetComponent<GrabMode>();
+            interactionMode = GetComponent<InteractionMode>();
         }
         
         #endif
@@ -57,12 +57,12 @@ namespace TedrickDev.XRPoser.Interactions
         private void AddSelectionMode<T>() where T : Component
         {
             if (TryGetComponent(out T _)) return;
-            if (TryGetComponent(out GrabMode sm)) DestroyImmediate(sm);
+            if (TryGetComponent(out InteractionMode sm)) DestroyImmediate(sm);
             gameObject.AddComponent<T>();
         }
 
-        private void ApplyPose(GrabZone grabData) => grabMode.ApplyPose(grabData);
+        private void ApplyPose(InteractionZone interactionData) => interactionMode.ApplyPose(interactionData);
 
-        private void OnInteract(GrabZone grabData) => ApplyPose(grabData);
+        private void OnInteract(InteractionZone interactionData) => ApplyPose(interactionData);
     }
 }

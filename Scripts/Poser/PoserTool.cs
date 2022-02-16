@@ -1,9 +1,7 @@
 ﻿using UnityEditor;
 using UnityEngine;
-using TedrickDev.Utilities;
-using TedrickDev.XRPoser.Interactions;
 
-namespace TedrickDev.XRPoser
+namespace TedrickDev.HandPoser.Poser
 {
     public class PoserTool : MonoBehaviour
     {
@@ -39,33 +37,7 @@ namespace TedrickDev.XRPoser
             rightPosition = new Vector3(halfDistance, rightPosition.y, rightPosition.z);
             rightHandParent.transform.localPosition = rightPosition;
         }
-        
-        public void ApplyDefaultPose(PoserHand poserHand)
-        {
-            switch (poserHand.Type) {
-                case Handedness.Left:
-                    poserHand.SetPose(manager.DefaultPose.LeftJoints);
-                    break;
-                case Handedness.Right:
-                    poserHand.SetPose(manager.DefaultPose.RightJoints);
-                    break;
-            }
-        }
-        
-        public void ApplyPose(PoserHand poserHand, Transform attachTransform)
-        {
-            switch (poserHand.Type) {
-                case Handedness.Left:
-                    poserHand.SetPose(poseData.LeftJoints);
-                    ApplyAttachmentTransform(poseData.LeftParentTransform, attachTransform);
-                    break;
-                case Handedness.Right:
-                    poserHand.SetPose(poseData.RightJoints);
-                    ApplyAttachmentTransform(poseData.RightParentTransform, attachTransform);
-                    break;
-            }
-        }
-        
+
         public void DefaultPose() => SetEditorPose(manager.DefaultPose);
         
         public void MirrorLeftToRight()
@@ -189,19 +161,6 @@ namespace TedrickDev.XRPoser
             }
         }
         
-        private static void ApplyAttachmentTransform(PoseTransform parentTransformData, Transform attachTransform)
-        {
-            // https://youtu.be/H-qnAHB1AMw?t=765
-            var adjustedPosition = parentTransformData.LocalPosition * -1f;
-            var adjustedRotation = Quaternion.Inverse(parentTransformData.LocalRotation);
-
-            adjustedPosition = adjustedPosition.RotatePointAroundPivot(Vector3.zero, adjustedRotation.eulerAngles);
-
-            // Apply offset to hand attach transform
-            attachTransform.localPosition = adjustedPosition;
-            attachTransform.localRotation = adjustedRotation;
-        }
-
         private static void MirrorJoints(PoserHand source, PoserHand copy)
         {
             for (var i = 0; i < source.Joints.Count; i++) {

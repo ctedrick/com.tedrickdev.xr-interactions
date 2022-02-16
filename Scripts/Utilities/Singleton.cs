@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace TedrickDev.Utilities
+namespace TedrickDev.HandPoser.Utilities
 {
     /// <summary>
     /// A static instance is similar to a singleton, but instead of destroying any new

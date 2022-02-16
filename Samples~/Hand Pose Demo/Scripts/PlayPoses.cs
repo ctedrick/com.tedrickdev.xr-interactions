@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace TedrickDev.XRPoser.HandPoseDemo
+namespace TedrickDev.HandPoser.Poser.HandPoseDemo
 {
     public class PlayPoses : MonoBehaviour
     {

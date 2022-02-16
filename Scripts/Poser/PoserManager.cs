@@ -1,7 +1,7 @@
-﻿using TedrickDev.Utilities;
+﻿using TedrickDev.HandPoser.Utilities;
 using UnityEngine;
 
-namespace TedrickDev.XRPoser
+namespace TedrickDev.HandPoser.Poser
 {
     public class PoserManager : Singleton<PoserManager>
     {
