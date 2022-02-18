@@ -1,4 +1,4 @@
-﻿using TedrickDev.HandPoser.Utilities;
+﻿using TedrickDev.HandPoser.Utility;
 using UnityEngine;
 
 namespace TedrickDev.HandPoser.Poser

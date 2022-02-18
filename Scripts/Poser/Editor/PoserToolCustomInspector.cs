@@ -1,4 +1,4 @@
-﻿using TedrickDev.HandPoser.Utilities;
+﻿using TedrickDev.HandPoser.Utility;
 using UnityEditor;
 using UnityEngine;
 
