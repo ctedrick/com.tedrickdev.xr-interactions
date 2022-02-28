@@ -1,4 +1,4 @@
-# Unity XR Hand Poser Tool
+# Unity XR Interactions Toolkit
 
 ![Github licence](http://img.shields.io/badge/license-MIT-blue.svg)
 
