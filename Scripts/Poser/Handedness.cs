@@ -1,4 +1,8 @@
-﻿namespace TedrickDev.InteractionsToolkit.Poser
+﻿using JetBrains.Annotations;
+
+namespace TedrickDev.InteractionsToolkit.Poser
 {
-    public enum Handedness { Left, Right }
+    public enum Handedness {
+        [UsedImplicitly] Left,
+        [UsedImplicitly] Right }
 }

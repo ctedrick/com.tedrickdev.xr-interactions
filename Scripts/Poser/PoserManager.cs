@@ -30,29 +30,5 @@ namespace TedrickDev.InteractionsToolkit.Poser
                 enabled = false;
             }
         }
-        
-        public void ApplyPose(Handedness hand, PoseData pose)
-        {
-            if (hand == Handedness.Left) LeftPoserHand.SetPose(pose.LeftJoints);
-            else RightPoserHand.SetPose(pose.RightJoints);
-        }
-        
-        public void ApplyPose(PoserHand hand, PoseData pose)
-        {
-            if (hand.Type == Handedness.Left) LeftPoserHand.SetPose(pose.LeftJoints);
-            else RightPoserHand.SetPose(pose.RightJoints);
-        }
-        
-        public void ApplyDefaultPose(Handedness hand)
-        {
-            if (hand == Handedness.Left) LeftPoserHand.SetPose(DefaultPose.LeftJoints);
-            else RightPoserHand.SetPose(DefaultPose.RightJoints);
-        }
-        
-        public void ApplyDefaultPose(PoserHand hand)
-        {
-            if (hand.Type == Handedness.Left) LeftPoserHand.SetPose(DefaultPose.LeftJoints);
-            else RightPoserHand.SetPose(DefaultPose.RightJoints);
-        }
     }
 }

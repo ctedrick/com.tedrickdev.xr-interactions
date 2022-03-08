@@ -1,4 +1,5 @@
-﻿using TedrickDev.InteractionsToolkit.Poser;
+﻿using JetBrains.Annotations;
+using TedrickDev.InteractionsToolkit.Poser;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -70,18 +71,20 @@ namespace TedrickDev.InteractionsToolkit.Core
         /// <summary>
         /// Called when interact button is pressed but no valid targets exist
         /// </summary>
-        public virtual void HandleInteractionPressedWithNoValidTargets()
+        public void HandleInteractionPressedWithNoValidTargets()
         {
             // trigger pose, event, etc...
             print($"{name} notified of idle selection");
         }
 
-        public virtual void NotifySelectEnter(BaseInteractable interactable)
+        [UsedImplicitly]
+        public void NotifySelectEnter(BaseInteractable interactable)
         {
             print($"{name} notified of selection enter");
         }
         
-        public virtual void NotifySelectExit(BaseInteractable interactable)
+        [UsedImplicitly]
+        public void NotifySelectExit(BaseInteractable interactable)
         {
             print($"{name} notified of selection exit");
         }

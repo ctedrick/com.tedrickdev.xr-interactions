@@ -12,12 +12,12 @@ namespace TedrickDev.InteractionsToolkit.Core
             if (interactionManager) interactionManager.RegisterInteractable(this);
         }
 
-        public virtual void HandleHoverEnter(BaseInteractor interactor)
+        public void HandleHoverEnter(BaseInteractor interactor)
         {
             print($"{interactor.name} is hovering on {name}");
         }
 
-        public virtual void HandleHoverExit(BaseInteractor interactor)
+        public void HandleHoverExit(BaseInteractor interactor)
         {
             print($"{interactor.name} is no longer hovering on {name}");
         }

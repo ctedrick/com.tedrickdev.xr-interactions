@@ -24,9 +24,7 @@ namespace TedrickDev.InteractionsToolkit.Poser
             if (GUILayout.Button(editButtonText, EditorStyles.miniButton)) {
                 if (isEditing) {
                     var tool = poserHand.transform.GetComponentInParent<PoserTool>();
-                    if (tool) {
-                        Selection.SetActiveObjectWithContext(tool, null);
-                    }
+                    if (tool) Selection.SetActiveObjectWithContext(tool, null);
                 } 
                 
                 ActiveEditorTracker.sharedTracker.isLocked = !ActiveEditorTracker.sharedTracker.isLocked;
@@ -44,7 +42,7 @@ namespace TedrickDev.InteractionsToolkit.Poser
             var lookRotation = Quaternion.LookRotation(Camera.current.transform.forward);
             if (poserHand && poserHand.Joints != null && poserHand.Joints.Count != 0) {
                 foreach (var joint in poserHand.Joints) {
-                    Handles.color = new Color(255,255, 255f, 0.05f);
+                    Handles.color = new Color(255, 255, 255f, 0.05f);
 
                     Handles.DrawSolidDisc(joint.position, Camera.current.transform.forward, Radius);
                     

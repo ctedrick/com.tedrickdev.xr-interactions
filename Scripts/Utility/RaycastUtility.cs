@@ -1,4 +1,5 @@
 ﻿using System;
+using JetBrains.Annotations;
 using TedrickDev.InteractionsToolkit.Core;
 using UnityEngine;
 
@@ -9,7 +10,6 @@ namespace TedrickDev.InteractionsToolkit.Utility
         public event Action<T> OnHoverEnter;
         public event Action<T> OnHoverExit;
         
-        public bool IsHovering{ get; private set; }
         
         private readonly Transform source;
         private readonly LayerMask layerMask;
@@ -18,7 +18,6 @@ namespace TedrickDev.InteractionsToolkit.Utility
         private readonly float radius;
         private readonly bool isSphere;
 
-        private bool isHovering;
         private T currentTarget;
         
         public RaycastUtility(Transform source, LayerMask layerMask, float range)
@@ -28,6 +27,7 @@ namespace TedrickDev.InteractionsToolkit.Utility
             this.layerMask = layerMask;
         }
         
+        [UsedImplicitly]
         public RaycastUtility(Transform source, float range, float radius)
         {
             this.source = source;
@@ -47,7 +47,6 @@ namespace TedrickDev.InteractionsToolkit.Utility
                 
                 if (newTarget != currentTarget) {
                     currentTarget = newTarget;
-                    IsHovering = true;
                     OnHoverEnter?.Invoke(currentTarget);
                 }
             }      

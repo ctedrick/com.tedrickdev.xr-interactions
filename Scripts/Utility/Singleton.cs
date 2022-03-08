@@ -2,13 +2,14 @@
 // Licensed under the MIT License. See LICENSE in the project root for license information.
 // https://github.com/microsoft/MixedRealityToolkit-Unity/blob/d343a0897f43ba0094d8e5ca032dc3a243cf2712/Assets/HoloToolkit/Utilities/Scripts/Singleton.cs
 
+using JetBrains.Annotations;
 using UnityEngine;
 
 namespace TedrickDev.InteractionsToolkit.Utility
 {
     public class Singleton<T> : MonoBehaviour where T : Singleton<T>
     {
-        public static T Instance{ get; private set; }
+        [UsedImplicitly] public static T Instance{ get; private set; }
 
         protected virtual void Awake()
         {

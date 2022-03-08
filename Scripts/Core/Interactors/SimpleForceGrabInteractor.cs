@@ -1,5 +1,4 @@
-﻿using System;
-using TedrickDev.InteractionsToolkit.Utility;
+﻿using TedrickDev.InteractionsToolkit.Utility;
 using UnityEngine;
 
 namespace TedrickDev.InteractionsToolkit.Core

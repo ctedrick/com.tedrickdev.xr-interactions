@@ -2,8 +2,5 @@
 
 namespace TedrickDev.InteractionsToolkit.Poser
 {
-    public class PoserHandParent : MonoBehaviour
-    {
-        
-    }
+    public class PoserHandParent : MonoBehaviour { }
 }
