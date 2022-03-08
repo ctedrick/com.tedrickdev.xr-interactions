@@ -1,8 +1,8 @@
-﻿using TedrickDev.HandPoser.Utility;
+﻿using TedrickDev.InteractionsToolkit.Utility;
 using UnityEditor;
 using UnityEngine;
 
-namespace TedrickDev.HandPoser.Poser
+namespace TedrickDev.InteractionsToolkit.Poser
 {
     [CustomEditor(typeof(PoserTool))]
     public class PoserToolCustomInspector : Editor

@@ -4,7 +4,7 @@
 
 using UnityEngine;
 
-namespace TedrickDev.HandPoser.Utility
+namespace TedrickDev.InteractionsToolkit.Utility
 {
     public class Singleton<T> : MonoBehaviour where T : Singleton<T>
     {

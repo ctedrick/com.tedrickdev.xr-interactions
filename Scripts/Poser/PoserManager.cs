@@ -1,7 +1,7 @@
-﻿using TedrickDev.HandPoser.Utility;
+﻿using TedrickDev.InteractionsToolkit.Utility;
 using UnityEngine;
 
-namespace TedrickDev.HandPoser.Poser
+namespace TedrickDev.InteractionsToolkit.Poser
 {
     public class PoserManager : Singleton<PoserManager>
     {

@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace TedrickDev.HandPoser.Poser
+namespace TedrickDev.InteractionsToolkit.Poser
 {
     public class PoseData : ScriptableObject
     {

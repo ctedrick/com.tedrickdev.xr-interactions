@@ -2,17 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace TedrickDev.HandPoser.Poser
+namespace TedrickDev.InteractionsToolkit.Poser
 {
     public class PoserHand : MonoBehaviour
     {
+        [Header("Hand Properties")]
+        public Handedness Type;
+        public Transform AttachTransform;
         [SerializeField] private List<Transform> joints;
 
-        public Transform AttachTransform;
-
         public List<Transform> Joints => joints;
-        
-        public Handedness Type;
 
         private void Awake()
         {
@@ -48,11 +47,9 @@ namespace TedrickDev.HandPoser.Poser
             }
         }
 
-        public void ApplyDefaultPose()
+        public void SetPose(PoseData poseData, float duration = 0.2f)
         {
-            SetPose(Type == Handedness.Left
-                        ? PoserManager.Instance.DefaultPose.LeftJoints
-                        : PoserManager.Instance.DefaultPose.RightJoints);
+            SetPose(Type == Handedness.Left ? poseData.LeftJoints : poseData.RightJoints, duration);
         }
         
         public void SetPose(PoseTransform[] pose, float duration = 0.2f)

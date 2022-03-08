@@ -1,6 +1,6 @@
 ﻿using UnityEditor;
 
-namespace TedrickDev.HandPoser.Utility
+namespace TedrickDev.InteractionsToolkit.Utility
 {
     public static class Extensions
     {

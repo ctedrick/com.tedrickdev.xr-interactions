@@ -1,6 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using TedrickDev.HandPoser.Poser;
+using TedrickDev.InteractionsToolkit.Poser;
 using UnityEngine;
 
 namespace TedrickDev.HandPoser.HandPoseDemo

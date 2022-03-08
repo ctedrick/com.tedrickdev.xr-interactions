@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace TedrickDev.HandPoser.Poser
+namespace TedrickDev.InteractionsToolkit.Poser
 {
     [Serializable]
     public struct PoseTransform

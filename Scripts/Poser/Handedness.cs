@@ -1,4 +1,4 @@
-﻿namespace TedrickDev.HandPoser.Poser
+﻿namespace TedrickDev.InteractionsToolkit.Poser
 {
     public enum Handedness { Left, Right }
 }

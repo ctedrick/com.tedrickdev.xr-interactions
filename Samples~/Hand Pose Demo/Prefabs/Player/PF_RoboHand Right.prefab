@@ -41,6 +41,8 @@ GameObject:
   m_Component:
   - component: {fileID: 7573941805450984818}
   - component: {fileID: 4239409657511421326}
+  - component: {fileID: 5609923077530563793}
+  - component: {fileID: 5371598495982997502}
   m_Layer: 0
   m_Name: PF_RoboHand Right
   m_TagString: Untagged
@@ -75,6 +77,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66c411e95db7489c94ee983ad57c1f1e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Type: 1
+  AttachTransform: {fileID: 0}
   joints:
   - {fileID: 3762741156320026879}
   - {fileID: 2098605695848669155}
@@ -91,8 +95,35 @@ MonoBehaviour:
   - {fileID: 5590561928234325979}
   - {fileID: 8632934892981799062}
   - {fileID: 4268671197746144621}
-  handOffsetParentTransform: {fileID: 0}
-  Type: 1
+--- !u!114 &5609923077530563793
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9166093650228573422}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e5817b2d1f94127979e7065cb09a6b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  InteractionManager: {fileID: 0}
+  defaultPose: {fileID: 0}
+  attachTransform: {fileID: 0}
+  poserHand: {fileID: 4239409657511421326}
+--- !u!135 &5371598495982997502
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9166093650228573422}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.11065121
+  m_Center: {x: 0, y: 0.012141233, z: 0.0972708}
 --- !u!1001 &5332227246164179907
 PrefabInstance:
   m_ObjectHideFlags: 0
