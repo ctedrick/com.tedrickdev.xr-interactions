@@ -6,20 +6,20 @@ namespace TedrickDev.InteractionsToolkit.Utility
 {
     public class RaycastUtility<T> where T : BaseInteractable
     {
-        public event Action<Transform> OnHoverEnter;
-        public event Action<Transform> OnHoverExit;
+        public event Action<T> OnHoverEnter;
+        public event Action<T> OnHoverExit;
         
         public bool IsHovering{ get; private set; }
         
-        private Transform source;
-        private LayerMask layerMask;
+        private readonly Transform source;
+        private readonly LayerMask layerMask;
         
-        private float range;
-        private float radius;
-        private bool isSphere;
+        private readonly float range;
+        private readonly float radius;
+        private readonly bool isSphere;
 
         private bool isHovering;
-        private Transform currentTarget;
+        private T currentTarget;
         
         public RaycastUtility(Transform source, LayerMask layerMask, float range)
         {
@@ -39,13 +39,14 @@ namespace TedrickDev.InteractionsToolkit.Utility
         public void FixedUpdate()
         {
             var hitInfo = HitInfo();
-            if (hitInfo.transform != null) {
-                var target = hitInfo.transform;
 
-                if (currentTarget != null && target != currentTarget) OnHoverExit?.Invoke(currentTarget);
+            if (hitInfo.transform != null && hitInfo.transform.GetComponent<T>() != null) {
+                var newTarget = hitInfo.transform.GetComponent<T>();
+
+                if (currentTarget != null && newTarget != currentTarget) OnHoverExit?.Invoke(currentTarget);
                 
-                if (target != currentTarget) {
-                    currentTarget = hitInfo.transform;
+                if (newTarget != currentTarget) {
+                    currentTarget = newTarget;
                     IsHovering = true;
                     OnHoverEnter?.Invoke(currentTarget);
                 }
