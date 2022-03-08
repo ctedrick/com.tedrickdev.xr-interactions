@@ -16,12 +16,11 @@ namespace TedrickDev.InteractionsToolkit.Core
 
         public override void HandleSelectEnter(BaseInteractor interactor)
         {
-            var newHand = interactor.GetComponent<PoserHand>();
-            if (!newHand) return;
-            
-            if (activeHand == null) {
-                activeHand = newHand;
-                SetPose(activeHand, pose, AttachDuration);
+            if (interactor.TryGetComponent(out PoserHand newHand)) {
+                if (activeHand == null) {
+                    activeHand = newHand;
+                    SetPose(activeHand, pose, AttachDuration);
+                }
             }
         }
 
